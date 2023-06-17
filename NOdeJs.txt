@@ -12,7 +12,7 @@ fs.writeFile(file,data[,option],callback);
 
 file : file we created 
 ....................................
-
+  
 Instead of just writing to file, you can also read from a file.
 
 fs.readFile(path[options],callback);
