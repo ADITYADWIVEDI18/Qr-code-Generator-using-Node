@@ -1,6 +1,6 @@
 File System
 Well, the file system is the native node module that allows us to access the local storage.
-We can require the bits of code that we need from this module.
+We can require the bits of code that we need from this module. 
 
 But here is where we're going to get hold of that file system module.
 So I'm going to create a const called FS and this is going to be set to equal require and the module.
