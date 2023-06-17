@@ -18,7 +18,7 @@ Instead of just writing to file, you can also read from a file.
 fs.readFile(path[options],callback);
 fs.readFile("message.text","utf8", (err,date)=>{console.log(data);});
 
-....................................
+.....................................
 Node Package Mananger
 
 npm init 
