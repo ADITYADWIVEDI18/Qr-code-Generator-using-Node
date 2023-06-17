@@ -1,0 +1,133 @@
+File System
+Well, the file system is the native node module that allows us to access the local storage.
+We can require the bits of code that we need from this module.
+
+But here is where we're going to get hold of that file system module.
+So I'm going to create a const called FS and this is going to be set to equal require and the module.
+
+const fs = require("fs");
+
+//Format we write
+fs.writeFile(file,data[,option],callback);
+
+file : file we created 
+....................................
+
+Instead of just writing to file, you can also read from a file.
+
+fs.readFile(path[options],callback);
+fs.readFile("message.text","utf8", (err,date)=>{console.log(data);});
+
+....................................
+Node Package Mananger
+
+npm init 
+
+npm install something(name of package)
+
+ESM - Since version 12 of Node we've moved on a little bit and Node is now enabled to use Ecmascript
+
+modules.
+
+CJS -Cjs stands for Commonjs and this was the method using require that we used to use to get hold of node modules, native node modules or even modules.
+
+HOW TO ENABLE ES module ?
+
+Remember, you have to go into the package.json and add this extra key value pair to set the type of
+
+your project to module based to allow us to use the ES modules.
+
+....................................
+
+QR CODE GENERATOR
+
+We're going to be using NodeJS packages to generate QR codes from any URL that we can come up with.
+
+It's kind of like a 2D bar code where you can scan with your phone in order to direct to any URL.
+Now in order to create this project, we're going to be using two packages from NPM.
+
+One is called Inquirer, and this is something that's going to allow us to get inputs from the user.
+
+And another package called QR image, which is going to generate images as a PNG for us to save into four local file system.
+
+Either we use ESM OR CJS.
+
+import inquirer from "inquirer" (EJS)
+
+
+inquirer
+  .prompt([
+    /* Pass your questions in here */
+  ])
+  .then((answers) => {
+    // Use user feedback for... whatever!!
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
+
+
+qr_svg.pipe(require('fs').createWriteStream('i_love_qr.svg'));
+ 
+var svg_string = qr.imageSync('I love QR!', { type: 'svg' });
+
+
+
+This is their example code and we need to first pass a prompt to the user and then we wait for them
+
+to give us a answer and then we see if there are any errors to catch and to handle.
+
+The question is actually an object containing various optional values, such as the message to print
+
+or the name to use when you're storing the answer and a lot of other things which are all optional.
+
+
+And then the answer is a key value hash containing the client answers in each of the prompts you pass.
+
+Answer (And now we can define a name to use when we're storing the answer.)
+
+import inquirer from "inquirer";
+import qr from "qr-image";
+import fs from "fs";
+
+inquirer
+  .prompt([
+    {
+      message: "Type in your URL: ",
+      name: "URL",
+    },
+  ])
+  .then((answers) => {
+    const url = answers.URL;
+    var qr_svg = qr.image(url);
+    qr_svg.pipe(fs.createWriteStream("qr_img.png"));
+
+    fs.writeFile("URL.txt", url, (err) => {
+      if (err) throw err;
+      console.log("The file has been saved!");
+    });
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
+/* 
+1. Use the inquirer npm package to get user input.
+2. Use the qr-image npm package to turn the user entered URL into a QR code image.
+3. Create a txt file to save the user input using the native fs node module.
+*/
+
+
+
+
+
+
+
+
