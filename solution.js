@@ -11,10 +11,10 @@ inquirer
   ])
   .then((answers) => {
     const url = answers.URL;
-    var qr_svg = qr.image(url);
+    var qr_svg = qr.image(url);    //This line of code comes from the qr module which inputs information you want to store in your qr + format in which you want to get your qr code.(png,pdf etc).
     qr_svg.pipe(fs.createWriteStream("qr_img.png"));
 
-    fs.writeFile("URL.txt", url, (err) => {
+    fs.writeFile("URL.txt", url, (err) => {   // It create a file that store any particular data.
       if (err) throw err;
       console.log("The file has been saved!");
     });
